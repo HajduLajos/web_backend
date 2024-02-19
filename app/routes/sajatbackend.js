@@ -71,6 +71,7 @@ module.exports = function (app) {
   })
 
   // saját backend végpont
+  //------------------------------------------------------------------
 
   app.get('/PcJatekok', (req, res) => {
 
@@ -88,6 +89,7 @@ module.exports = function (app) {
     connection.end()
   })
 
+//------------------------------------------------------------------
 
   app.get('/Comment', (req, res) => {
 
@@ -106,7 +108,7 @@ module.exports = function (app) {
   })
 
   //SELECT film.film_cim,COUNT(*) AS darabszam FROM szavazat INNER JOIN film ON film_id=szavazat.szavazat_film GROUP BY film_id
-
+  //------------------------------------------------------------------
 
   app.get('/Diagram', (req, res) => {
 
@@ -124,6 +126,7 @@ module.exports = function (app) {
     connection.end()
   })
 
+  //------------------------------------------------------------------
 
   app.delete('/TorlesJatekok', (req, res) => {
     kapcsolat()
@@ -141,6 +144,7 @@ module.exports = function (app) {
     connection.end()
   })
 
+//------------------------------------------------------------------
 
   app.delete('/TorlesComment', (req, res) => {
     kapcsolat()
@@ -157,4 +161,98 @@ module.exports = function (app) {
       })
     connection.end()
   })
+
+//------------------------------------------------------------------
+
+app.get('/osszesAlkatresz', (req, res) => {
+    
+  kapcsolat()
+
+    connection.query('SELECT * FROM alkatreszek', (err, rows, fields) => {
+    if (err) throw err
+
+        console.log(rows)
+        res.send(rows)
+    })
+
+
+
+    connection.end()
+})
+
+//------------------------------------------------------------------
+
+
+app.post('/keresszoveg', (req, res) => {
+  kapcsolat()
+  
+  connection.query(`SELECT * FROM alkatreszek INNER JOIN komponens ON alkatresz_komponensid=komponens_id WHERE komponens_id = ${req.body.bevitel1}`, (err, rows, fields) => {
+  if (err) {
+    console.log("Hiba")
+  }
+  else{
+    console.log(rows)
+    res.send(rows)
+  }
+  
+  })
+  connection.end() 
+  })
+
+
+//------------------------------------------------------------------
+
+app.get('/KomponensSeged', (req, res) => {
+    
+  kapcsolat()
+
+    connection.query('SELECT * FROM komponens', (err, rows, fields) => {
+    if (err) throw err
+
+        console.log(rows)
+        res.send(rows)
+    })
+
+
+
+    connection.end()
+})
+
+//------------------------------------------------------------------
+
+app.get('/pcAlkatresz', (req, res) => {
+    
+  kapcsolat()
+
+    connection.query('SELECT * FROM alkatreszek WHERE alkatresz_eszkozid=1', (err, rows, fields) => {
+    if (err) throw err
+
+        console.log(rows)
+        res.send(rows)
+    })
+
+
+
+    connection.end()
+})
+
+//------------------------------------------------------------------
+
+app.delete('/Alkatresztorles', (req, res) => {
+  kapcsolat()
+  connection.query(`DELETE FROM alkatreszek WHERE alkatresz_id=${req.body.bevitel1};`,
+   function (err, rows, fields) {
+    if (err) {
+      console.log("Hiba!")
+      res.send("Hiba!")
+    }
+    else {
+    console.log("Sikeres adattörlés!")
+    res.send("Sikeres adattörlés!")
+  }
+  })
+  connection.end()
+})
+
+
 };
