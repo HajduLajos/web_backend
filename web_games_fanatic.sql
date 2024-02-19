@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 192.168.100.103
--- Generation Time: Feb 14, 2024 at 11:06 AM
--- Server version: 10.11.4-MariaDB-log
--- PHP Version: 8.2.7
+-- Gép: 127.0.0.1
+-- Létrehozás ideje: 2024. Feb 19. 11:15
+-- Kiszolgáló verziója: 10.4.28-MariaDB
+-- PHP verzió: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `s71_db`
+-- Adatbázis: `web_games_fanatic`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `alkatreszek`
+-- Tábla szerkezet ehhez a táblához `alkatreszek`
 --
 
 CREATE TABLE `alkatreszek` (
@@ -36,10 +36,10 @@ CREATE TABLE `alkatreszek` (
   `alkatresz_kep` varchar(100) NOT NULL,
   `alkatresz_eszkozid` int(11) NOT NULL,
   `alkatresz_komponensid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Dumping data for table `alkatreszek`
+-- A tábla adatainak kiíratása `alkatreszek`
 --
 
 INSERT INTO `alkatreszek` (`alkatresz_id`, `alkatresz_info`, `alkatresz_megjelenes`, `alkatresz_garancia`, `alkatresz_ar`, `alkatresz_kep`, `alkatresz_eszkozid`, `alkatresz_komponensid`) VALUES
@@ -112,7 +112,7 @@ INSERT INTO `alkatreszek` (`alkatresz_id`, `alkatresz_info`, `alkatresz_megjelen
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comment`
+-- Tábla szerkezet ehhez a táblához `comment`
 --
 
 CREATE TABLE `comment` (
@@ -120,10 +120,10 @@ CREATE TABLE `comment` (
   `Comment_nev` varchar(50) NOT NULL,
   `Comment_szoveg` text NOT NULL,
   `Comment_ido` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Dumping data for table `comment`
+-- A tábla adatainak kiíratása `comment`
 --
 
 INSERT INTO `comment` (`Comment_id`, `Comment_nev`, `Comment_szoveg`, `Comment_ido`) VALUES
@@ -136,16 +136,16 @@ INSERT INTO `comment` (`Comment_id`, `Comment_nev`, `Comment_szoveg`, `Comment_i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eszkozok`
+-- Tábla szerkezet ehhez a táblához `eszkozok`
 --
 
 CREATE TABLE `eszkozok` (
   `eszkozok_id` int(11) NOT NULL,
   `eszkozok_nev` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Dumping data for table `eszkozok`
+-- A tábla adatainak kiíratása `eszkozok`
 --
 
 INSERT INTO `eszkozok` (`eszkozok_id`, `eszkozok_nev`) VALUES
@@ -157,7 +157,31 @@ INSERT INTO `eszkozok` (`eszkozok_id`, `eszkozok_nev`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hasznalttermekek`
+-- Tábla szerkezet ehhez a táblához `film`
+--
+
+CREATE TABLE `film` (
+  `film_id` int(11) NOT NULL,
+  `film_cim` varchar(50) NOT NULL,
+  `film_datum` date NOT NULL,
+  `film_hossz` int(11) NOT NULL,
+  `film_kep` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `film`
+--
+
+INSERT INTO `film` (`film_id`, `film_cim`, `film_datum`, `film_hossz`, `film_kep`) VALUES
+(1, 'Wandavision', '0000-00-00', 0, '1.png'),
+(2, 'Loki', '0000-00-00', 0, '2.png'),
+(3, 'Falcon and the winter soldier', '0000-00-00', 0, '3.png'),
+(57, 'ada', '2024-02-21', 155, 'adad');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `hasznalttermekek`
 --
 
 CREATE TABLE `hasznalttermekek` (
@@ -170,10 +194,10 @@ CREATE TABLE `hasznalttermekek` (
   `hasznalt_kep` varchar(255) NOT NULL,
   `hasznalt_eszkozid` int(11) NOT NULL,
   `hasznalt_komponensid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Dumping data for table `hasznalttermekek`
+-- A tábla adatainak kiíratása `hasznalttermekek`
 --
 
 INSERT INTO `hasznalttermekek` (`hasznalt_id`, `hasznalt_info`, `hasznalt_feltettev`, `hasznalt_eladoEmail`, `hasznalt_allapot`, `hasznalt_ar`, `hasznalt_kep`, `hasznalt_eszkozid`, `hasznalt_komponensid`) VALUES
@@ -187,7 +211,7 @@ INSERT INTO `hasznalttermekek` (`hasznalt_id`, `hasznalt_info`, `hasznalt_feltet
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jatekok`
+-- Tábla szerkezet ehhez a táblához `jatekok`
 --
 
 CREATE TABLE `jatekok` (
@@ -199,10 +223,10 @@ CREATE TABLE `jatekok` (
   `jatekok_kep` varchar(100) NOT NULL,
   `jatekok_eszkozid` int(11) NOT NULL,
   `jatekok_trailer` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Dumping data for table `jatekok`
+-- A tábla adatainak kiíratása `jatekok`
 --
 
 INSERT INTO `jatekok` (`jatekok_id`, `jatekok_nev`, `jatekok_db`, `jatekok_megjelenes`, `jatekok_ar`, `jatekok_kep`, `jatekok_eszkozid`, `jatekok_trailer`) VALUES
@@ -251,17 +275,17 @@ INSERT INTO `jatekok` (`jatekok_id`, `jatekok_nev`, `jatekok_db`, `jatekok_megje
 -- --------------------------------------------------------
 
 --
--- Table structure for table `komponens`
+-- Tábla szerkezet ehhez a táblához `komponens`
 --
 
 CREATE TABLE `komponens` (
   `komponens_id` int(11) NOT NULL,
   `komponens_nev` varchar(255) NOT NULL,
   `komponens_eszkozokid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Dumping data for table `komponens`
+-- A tábla adatainak kiíratása `komponens`
 --
 
 INSERT INTO `komponens` (`komponens_id`, `komponens_nev`, `komponens_eszkozokid`) VALUES
@@ -277,7 +301,7 @@ INSERT INTO `komponens` (`komponens_id`, `komponens_nev`, `komponens_eszkozokid`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rendeles`
+-- Tábla szerkezet ehhez a táblához `rendeles`
 --
 
 CREATE TABLE `rendeles` (
@@ -287,10 +311,10 @@ CREATE TABLE `rendeles` (
   `rendeles_telefonszam` varchar(100) NOT NULL,
   `rendeles_datum` date NOT NULL,
   `rendeles_osszar` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Dumping data for table `rendeles`
+-- A tábla adatainak kiíratása `rendeles`
 --
 
 INSERT INTO `rendeles` (`rendeles_id`, `rendeles_nev`, `rendeles_email`, `rendeles_telefonszam`, `rendeles_datum`, `rendeles_osszar`) VALUES
@@ -309,7 +333,106 @@ INSERT INTO `rendeles` (`rendeles_id`, `rendeles_nev`, `rendeles_email`, `rendel
 -- --------------------------------------------------------
 
 --
--- Table structure for table `velemeny`
+-- Tábla szerkezet ehhez a táblához `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `createdAt`, `updatedAt`) VALUES
+(1, 'user', '2020-08-02 14:57:31', '2020-08-02 14:57:31'),
+(2, 'moderator', '2020-08-02 14:57:31', '2020-08-02 14:57:31'),
+(3, 'admin', '2020-08-02 14:57:31', '2020-08-02 14:57:31');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `szavazat_jatekok`
+--
+
+CREATE TABLE `szavazat_jatekok` (
+  `szavazat_id` int(11) NOT NULL,
+  `szavazat_jatek` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `szavazat_jatekok`
+--
+
+INSERT INTO `szavazat_jatekok` (`szavazat_id`, `szavazat_jatek`) VALUES
+(1, 17),
+(2, 2),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 2),
+(8, 17),
+(9, 1),
+(10, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `createdAt`, `updatedAt`) VALUES
+(1, 'user', 'user', '$2a$08$gXM4pyuhZFlC72PeAwxrUOR0uA31/d2PdgnHP35JGV.0bQNiZBatS', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'mod', 'mod', '$2a$08$gXM4pyuhZFlC72PeAwxrUOR0uA31/d2PdgnHP35JGV.0bQNiZBatS', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'admin', 'admin', '$2a$08$97Ze1/hXfOX44WdC62Rq8uRkog9HYC1HukRX8eld2ZEKPyenM5v.G', '2020-08-02 15:03:59', '2020-08-02 15:03:59'),
+(14, 'valaki', 'valaki@gmail.com', '$2a$08$2I9RHv7Yt6ljopICRKZq9.c/PzU.jDQU2zqtSD16A3kjQjbBuhw1a', '2024-02-06 17:37:10', '2024-02-06 17:37:10');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `user_roles`
+--
+
+CREATE TABLE `user_roles` (
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  `roleId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `user_roles`
+--
+
+INSERT INTO `user_roles` (`createdAt`, `updatedAt`, `roleId`, `userId`) VALUES
+('0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 1),
+('2020-08-02 15:04:00', '2020-08-02 15:04:00', 1, 3),
+('2024-02-06 17:37:10', '2024-02-06 17:37:10', 1, 14),
+('0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 2),
+('0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 3),
+('2020-08-02 15:04:00', '2020-08-02 15:04:00', 3, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `velemeny`
 --
 
 CREATE TABLE `velemeny` (
@@ -318,10 +441,10 @@ CREATE TABLE `velemeny` (
   `velemeny_nev` varchar(255) NOT NULL,
   `velemeny_szoveg` text NOT NULL,
   `velemeny_ido` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `velemeny`
+-- A tábla adatainak kiíratása `velemeny`
 --
 
 INSERT INTO `velemeny` (`velemeny`, `velemeny_id`, `velemeny_nev`, `velemeny_szoveg`, `velemeny_ido`) VALUES
@@ -357,11 +480,11 @@ INSERT INTO `velemeny` (`velemeny`, `velemeny_id`, `velemeny_nev`, `velemeny_szo
 (45, 28, 'Tibor', 'Nem jön be a képregényes stílus.', '2021-01-20');
 
 --
--- Indexes for dumped tables
+-- Indexek a kiírt táblákhoz
 --
 
 --
--- Indexes for table `alkatreszek`
+-- A tábla indexei `alkatreszek`
 --
 ALTER TABLE `alkatreszek`
   ADD PRIMARY KEY (`alkatresz_id`),
@@ -369,19 +492,25 @@ ALTER TABLE `alkatreszek`
   ADD KEY `alkatresz_komponensid` (`alkatresz_komponensid`);
 
 --
--- Indexes for table `comment`
+-- A tábla indexei `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`Comment_id`);
 
 --
--- Indexes for table `eszkozok`
+-- A tábla indexei `eszkozok`
 --
 ALTER TABLE `eszkozok`
   ADD PRIMARY KEY (`eszkozok_id`);
 
 --
--- Indexes for table `hasznalttermekek`
+-- A tábla indexei `film`
+--
+ALTER TABLE `film`
+  ADD PRIMARY KEY (`film_id`);
+
+--
+-- A tábla indexei `hasznalttermekek`
 --
 ALTER TABLE `hasznalttermekek`
   ADD PRIMARY KEY (`hasznalt_id`),
@@ -389,116 +518,166 @@ ALTER TABLE `hasznalttermekek`
   ADD KEY `hasznalt_komponensid` (`hasznalt_komponensid`);
 
 --
--- Indexes for table `jatekok`
+-- A tábla indexei `jatekok`
 --
 ALTER TABLE `jatekok`
   ADD PRIMARY KEY (`jatekok_id`),
   ADD KEY `jatekok_eszkozid` (`jatekok_eszkozid`);
 
 --
--- Indexes for table `komponens`
+-- A tábla indexei `komponens`
 --
 ALTER TABLE `komponens`
   ADD PRIMARY KEY (`komponens_id`),
   ADD KEY `komponens_eszkozokid` (`komponens_eszkozokid`);
 
 --
--- Indexes for table `rendeles`
+-- A tábla indexei `rendeles`
 --
 ALTER TABLE `rendeles`
   ADD PRIMARY KEY (`rendeles_id`);
 
 --
--- Indexes for table `velemeny`
+-- A tábla indexei `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- A tábla indexei `szavazat_jatekok`
+--
+ALTER TABLE `szavazat_jatekok`
+  ADD PRIMARY KEY (`szavazat_id`);
+
+--
+-- A tábla indexei `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- A tábla indexei `user_roles`
+--
+ALTER TABLE `user_roles`
+  ADD PRIMARY KEY (`roleId`,`userId`),
+  ADD KEY `userId` (`userId`);
+
+--
+-- A tábla indexei `velemeny`
 --
 ALTER TABLE `velemeny`
   ADD PRIMARY KEY (`velemeny`),
   ADD KEY `velemeny_idd` (`velemeny_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- A kiírt táblák AUTO_INCREMENT értéke
 --
 
 --
--- AUTO_INCREMENT for table `alkatreszek`
+-- AUTO_INCREMENT a táblához `alkatreszek`
 --
 ALTER TABLE `alkatreszek`
   MODIFY `alkatresz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
--- AUTO_INCREMENT for table `comment`
+-- AUTO_INCREMENT a táblához `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `Comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `Comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
--- AUTO_INCREMENT for table `eszkozok`
+-- AUTO_INCREMENT a táblához `eszkozok`
 --
 ALTER TABLE `eszkozok`
   MODIFY `eszkozok_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `hasznalttermekek`
+-- AUTO_INCREMENT a táblához `film`
+--
+ALTER TABLE `film`
+  MODIFY `film_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+
+--
+-- AUTO_INCREMENT a táblához `hasznalttermekek`
 --
 ALTER TABLE `hasznalttermekek`
   MODIFY `hasznalt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
--- AUTO_INCREMENT for table `jatekok`
+-- AUTO_INCREMENT a táblához `jatekok`
 --
 ALTER TABLE `jatekok`
-  MODIFY `jatekok_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `jatekok_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
--- AUTO_INCREMENT for table `komponens`
+-- AUTO_INCREMENT a táblához `komponens`
 --
 ALTER TABLE `komponens`
   MODIFY `komponens_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `rendeles`
+-- AUTO_INCREMENT a táblához `rendeles`
 --
 ALTER TABLE `rendeles`
   MODIFY `rendeles_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
--- AUTO_INCREMENT for table `velemeny`
+-- AUTO_INCREMENT a táblához `szavazat_jatekok`
+--
+ALTER TABLE `szavazat_jatekok`
+  MODIFY `szavazat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT a táblához `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT a táblához `velemeny`
 --
 ALTER TABLE `velemeny`
   MODIFY `velemeny` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
--- Constraints for dumped tables
+-- Megkötések a kiírt táblákhoz
 --
 
 --
--- Constraints for table `alkatreszek`
+-- Megkötések a táblához `alkatreszek`
 --
 ALTER TABLE `alkatreszek`
   ADD CONSTRAINT `alkatreszek_ibfk_1` FOREIGN KEY (`alkatresz_eszkozid`) REFERENCES `eszkozok` (`eszkozok_id`),
   ADD CONSTRAINT `alkatreszek_ibfk_2` FOREIGN KEY (`alkatresz_komponensid`) REFERENCES `komponens` (`komponens_id`);
 
 --
--- Constraints for table `hasznalttermekek`
+-- Megkötések a táblához `hasznalttermekek`
 --
 ALTER TABLE `hasznalttermekek`
   ADD CONSTRAINT `hasznalttermekek_ibfk_1` FOREIGN KEY (`hasznalt_eszkozid`) REFERENCES `eszkozok` (`eszkozok_id`),
   ADD CONSTRAINT `hasznalttermekek_ibfk_2` FOREIGN KEY (`hasznalt_komponensid`) REFERENCES `komponens` (`komponens_id`);
 
 --
--- Constraints for table `jatekok`
+-- Megkötések a táblához `jatekok`
 --
 ALTER TABLE `jatekok`
   ADD CONSTRAINT `jatekok_ibfk_1` FOREIGN KEY (`jatekok_eszkozid`) REFERENCES `eszkozok` (`eszkozok_id`);
 
 --
--- Constraints for table `komponens`
+-- Megkötések a táblához `komponens`
 --
 ALTER TABLE `komponens`
   ADD CONSTRAINT `komponens_ibfk_1` FOREIGN KEY (`komponens_eszkozokid`) REFERENCES `eszkozok` (`eszkozok_id`);
 
 --
--- Constraints for table `velemeny`
+-- Megkötések a táblához `user_roles`
+--
+ALTER TABLE `user_roles`
+  ADD CONSTRAINT `user_roles_ibfk_1` FOREIGN KEY (`roleId`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_roles_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Megkötések a táblához `velemeny`
 --
 ALTER TABLE `velemeny`
   ADD CONSTRAINT `velemeny_ibfk_1` FOREIGN KEY (`velemeny_id`) REFERENCES `jatekok` (`jatekok_id`);
