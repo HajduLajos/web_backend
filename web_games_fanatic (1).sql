@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Feb 19. 11:15
+-- Létrehozás ideje: 2024. Feb 19. 11:45
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `web_games_fanatic`
 --
+CREATE DATABASE IF NOT EXISTS `web_games_fanatic` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+USE `web_games_fanatic`;
 
 -- --------------------------------------------------------
 
