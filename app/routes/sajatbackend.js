@@ -254,5 +254,24 @@ app.delete('/Alkatresztorles', (req, res) => {
   connection.end()
 })
 
+//---------------------------------------------------------------------
+//UPDATE comment SET Comment_szoveg = '' WHERE comment.Comment_id = 41;
+
+app.post('/commentAtir', (req, res) => {
+  kapcsolat()
+  
+  connection.query(`UPDATE comment SET Comment_szoveg = '${req.body.bevitel1}' WHERE comment.Comment_id = ${req.body.bevitel2}`, (err, rows, fields) => {
+  if (err) {
+    console.log("Hiba")
+  }
+  else{
+    console.log(rows)
+    res.send(rows)
+  }
+  
+  })
+  connection.end() 
+  })
+
 
 };
