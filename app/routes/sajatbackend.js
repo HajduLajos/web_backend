@@ -39,6 +39,18 @@ module.exports = function (app) {
   })
 
 
+  app.get('/adminhibajelentes', (req, res) => {
+    kapcsolat()
+    connection.query('SELECT * from hibabejelentes', function (err, rows, fields) {
+      if (err) throw err
+      console.log(rows)
+      res.send(rows)
+    })
+
+    connection.end()
+  })
+
+
   app.post('/szavazatfelvitel', (req, res) => {
     kapcsolat()
     connection.query('insert into szavazat values (null,' + req.body.bevitel1 + ')', function (err, rows, fields) {
@@ -53,6 +65,25 @@ module.exports = function (app) {
     })
     connection.end()
   })
+
+
+  app.post('/hibajelentes', (req, res) => {
+    kapcsolat()
+    connection.query(`INSERT INTO hibabejelentes VALUES (NULL, '${req.body.bevitel1}', '${req.body.bevitel2}', '${req.body.bevitel3}');`, function (err, rows, fields) {
+      if (err) {
+        console.log("Hiba")
+        res.send("Hiba")
+      }
+      else {
+        console.log("Hibabejelentés megtörtént!")
+        res.send("Hibabejelentés megtörtént!")
+      }
+    })
+    connection.end()
+  })
+
+
+
   app.post('/keres', (req, res) => {
     kapcsolat()
     let parancs = 'SELECT * from film where film_cim like "%' + req.body.bevitel1 + '%"'
@@ -164,6 +195,24 @@ module.exports = function (app) {
   app.delete('/TorlesComment', (req, res) => {
     kapcsolat()
     connection.query(`DELETE FROM comment WHERE Comment_id=${req.body.bevitel1}`,
+      function (err, rows, fields) {
+        if (err) {
+          console.log("Hiba")
+          res.send("Hiba")
+        }
+        else {
+          console.log("Sikeresen törölve!")
+          res.send("Sikeresen törölve!")
+        }
+      })
+    connection.end()
+  })
+
+  //------------------------------------------------------------------
+
+  app.delete('/TorlesHibabejelentes', (req, res) => {
+    kapcsolat()
+    connection.query(`DELETE FROM hibabejelentes WHERE hibabejelentes_id=${req.body.bevitel1}`,
       function (err, rows, fields) {
         if (err) {
           console.log("Hiba")
