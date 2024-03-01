@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Feb 19. 11:42
+-- Létrehozás ideje: 2024. Már 01. 08:08
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `web_games_fanatic`
 --
-CREATE DATABASE IF NOT EXISTS `web_games_fanatic` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
-USE `web_games_fanatic`;
 
 -- --------------------------------------------------------
 
@@ -67,8 +65,6 @@ INSERT INTO `alkatreszek` (`alkatresz_id`, `alkatresz_info`, `alkatresz_megjelen
 (21, 'Playstation 4 (PS4) Nacon Revolution Pro Unlimited Kontroller', '2020-11-10', 2, 44990, 'kep20.jpg', 3, 8),
 (26, 'Radeon RX-580 Videokártya, 8GB, GDDR5, 256 bit', '2017-04-18', 2, 76000, 'kep23.jpg', 1, 1),
 (29, 'ASUS Dual GeForce RTX 4060 OC videokártya, 8 GB GDDR6, 128-bit', '2023-06-29', 2, 160000, 'kep24.jpg', 1, 1),
-(30, 'Radeon RX-580, 8GB, GDDR5, 256 bit\n', '2017-04-18', 2, 76000, 'kep23.jpg', 1, 1),
-(31, 'ASUS Dual GeForce RTX 4060 OC, 8 GB GDDR6, 128-bit', '2023-06-29', 2, 160000, 'kep24.jpg', 1, 1),
 (32, 'AMD Ryzen 7 7800X3D 4.4GHz 8-Cores Box Processzor', '2013-02-14', 1, 160000, 'kep25.jpg', 1, 4),
 (33, 'Intel Core i5-13600K 3.5GHz 14-Core Box Processzor\r\n', '2023-06-20', 3, 122000, 'kep26.jpg', 1, 4),
 (34, 'Intel Core i9-14900K 3.2GHz Box Processzor', '2023-10-17', 2, 248999, 'kep27.jpg', 1, 4),
@@ -129,11 +125,11 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`Comment_id`, `Comment_nev`, `Comment_szoveg`, `Comment_ido`) VALUES
-(1, 'Lajos', 'Ez egy comment', '2024-01-03'),
+(1, 'Lajos', 'Ez megint nem egy comment!', '2024-01-03'),
 (5, 'Anna', 'A Prince of Persia: The Lost Crown:\r\nNagyon ocsmány. Én azért reménykedtem benne, hogy hozza az ubisoftos lehengerlő látványvilágot de ez még mobilon is szégyen lenne. Eskü ha nem mondod az ott egy könyvtár vagy erdő én nem jövök rá :D', '2023-09-24'),
 (8, 'Devil', 'Nem túlzás, ez a Godzilla film tényleg sokkal jobban fókuszál az egyik szereplő lelki drámájára és karakterfejlődésére, mint az Egy Gyík tombolására. Tulajdonképpen, aki pusztításpornót vár az szerintem csalódni fog, mert szerintem Godzilla a vásznon limitált ideig mutatkozik... bár azon jelenetek minden képkockája arany. A zene, a feszültség, a dráma, amit Godzilla jelenléte és ténykedése okoz. Olyan szinten komponálják meg a szörny jeleneteit, ami talán csak eszköz arra, hogy érzékeltessék azt a traumát, amit Japán átélt a második világháború után és az adott karakterek érzelmeit sokkal hatásosabban tudja kifejezni, mint az eddigi Gojira filmek, amelyek többsége tényleg nem nagyon próbált meg a B filmeknél magasabbra törni. Bár én a 2004-es Final Wars-t is kifejezetten imádon.', '2024-01-12'),
-(11, 'Levente', 'Call of Duty: Modern Warfare III - multiplayer:\r\nMivel kicsit untam a BF et, gondoltam adok neki egy esélyt... gyalázat. A kampány is meg a multi is. A régi/új mapok jól néznek ki, de ilyen egy aljas szemét játékkal még nem volt dolgom. 2 jó meccs után berak csalók meg aimassistok köcsögök mellé. Ha összeszedek 2 killt, direkt bespawnol mögém egy ellenfelet, hogy biztosan megdögöljek, neki meg biztosan legyen egy killje. Valamikor 2 hitből kinyírok vkit, valamikor 9 hit után is elszalad, de én 1 másodperc alatt megdöglök. Hagyjuk má, miez?!?! BF ben 3.5 4.5 ös k/d m van átlagban és nem csalok. Akkor valszeg nem velem lehet a gond. Jameg, milyen perk az, hogy nincs lépéshangod. Eddig sem lehetett ezt hallani codban, de mostmár végképp nem. Az agymosott amcsi rétegnek ez kell, hát hajrá. A jutubereket meg mindig könnyű lobbiba teszik, hogy promotálják a játékot. Undorító ez az egész. Ment is a refund, meg is jött. Maradok a Battlefieldeknél, még mindig hatalms élményt ad.', '2023-11-24'),
-(41, 'Árpa János', 'Szerintem a facebooknak nem sok értelme van. Mindenki felesleges dolgokat tesz fel oda.', '2024-01-17');
+(11, 'Levente', 'Call of Duty: Modern Warfare III - multiplayer:\nMivel kicsit untam a BF et, gondoltam adok neki egy esélyt... gyalázat. A kampány is meg a multi is. A régi/új mapok jól néznek ki, de ilyen egy aljas szemét játékkal még nem volt dolgom. 2 jó meccs után berak csalók meg aimassistok köcsögök mellé. Ha összeszedek 2 killt, direkt bespawnol mögém egy ellenfelet, hogy biztosan megdögöljek, neki meg biztosan legyen egy killje. Valamikor 2 hitből kinyírok vkit, valamikor 9 hit után is elszalad, de én 1 másodperc alatt megdöglök. Hagyjuk má, miez?!?! BF ben 3.5 4.5 ös k/d m van átlagban és nem csalok. Akkor valszeg nem velem lehet a gond. Jameg, milyen perk az, hogy nincs lépéshangod. Eddig sem lehetett ezt hallani codban, de mostmár végképp nem. Az agymosott amcsi rétegnek ez kell, hát hajrá. A youtubereket meg mindig könnyű lobbiba teszik, hogy promotálják a játékot. Undorító ez az egész. Ment is a refund, meg is jött. Maradok a Battlefieldeknél, még mindig hatalms élményt ad.', '2023-11-24'),
+(41, 'Árpa János', 'Szerintem a facebooknak nem sok értelme van. Mindenki felesleges. dolgokat tesz fel oda.', '2024-01-17');
 
 -- --------------------------------------------------------
 
@@ -208,6 +204,26 @@ INSERT INTO `hasznalttermekek` (`hasznalt_id`, `hasznalt_info`, `hasznalt_feltet
 (29, 'Fejhallgató', '2024-01-11', 'Feled.Elem@gmail.com', 'Sérült', 9900, 'photo_1704889455859_photo.jpg', 2, 8),
 (35, 'Alaplap', '2024-01-15', 'Fazekasodon@gmail.com', 'Új', 59000, 'photo_1705304301182_photo.jpg', 2, 2),
 (72, '4060 OC', '2024-02-07', 'Kelemen.andri@gmail.com', 'Használt', 85000, 'photo_1707297012748_photo.jpg', 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `hibabejelentes`
+--
+
+CREATE TABLE `hibabejelentes` (
+  `hibabejelentes_id` int(11) NOT NULL,
+  `hibabejelentes_nev` varchar(255) NOT NULL,
+  `hibabejelentes_szoveg` text NOT NULL,
+  `hibabejelentes_datum` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `hibabejelentes`
+--
+
+INSERT INTO `hibabejelentes` (`hibabejelentes_id`, `hibabejelentes_nev`, `hibabejelentes_szoveg`, `hibabejelentes_datum`) VALUES
+(1, 'Péter', 'Az alábbi oldalon nem találtam meg a vásárlás menüt.', '2024-02-21');
 
 -- --------------------------------------------------------
 
@@ -521,6 +537,12 @@ ALTER TABLE `hasznalttermekek`
   ADD KEY `hasznalt_komponensid` (`hasznalt_komponensid`);
 
 --
+-- A tábla indexei `hibabejelentes`
+--
+ALTER TABLE `hibabejelentes`
+  ADD PRIMARY KEY (`hibabejelentes_id`);
+
+--
 -- A tábla indexei `jatekok`
 --
 ALTER TABLE `jatekok`
@@ -605,6 +627,12 @@ ALTER TABLE `film`
 --
 ALTER TABLE `hasznalttermekek`
   MODIFY `hasznalt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+
+--
+-- AUTO_INCREMENT a táblához `hibabejelentes`
+--
+ALTER TABLE `hibabejelentes`
+  MODIFY `hibabejelentes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT a táblához `jatekok`
