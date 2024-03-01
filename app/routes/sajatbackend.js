@@ -53,7 +53,7 @@ module.exports = function (app) {
 
   app.post('/szavazatfelvitel', (req, res) => {
     kapcsolat()
-    connection.query('insert into szavazat values (null,' + req.body.bevitel1 + ')', function (err, rows, fields) {
+    connection.query(`insert into szavazat_jatekok values (null,'${req.body.bevitel1}')`, function (err, rows, fields) {
       if (err) {
         console.log("Hiba")
         res.send("Hiba")
@@ -318,23 +318,23 @@ module.exports = function (app) {
     connection.end()
   })
 
-//---------------------------------------------------------------------
-//UPDATE comment SET Comment_szoveg = '' WHERE comment.Comment_id = 41;
+  //---------------------------------------------------------------------
+  //UPDATE comment SET Comment_szoveg = '' WHERE comment.Comment_id = 41;
 
-app.post('/commentAtir', (req, res) => {
-  kapcsolat()
-  
-  connection.query(`UPDATE comment SET Comment_szoveg = '${req.body.bevitel1}' WHERE comment.Comment_id = ${req.body.bevitel2}`, (err, rows, fields) => {
-  if (err) {
-    console.log("Hiba")
-  }
-  else{
-    console.log(rows)
-    res.send(rows)
-  }
-  
-  })
-  connection.end() 
+  app.post('/commentAtir', (req, res) => {
+    kapcsolat()
+
+    connection.query(`UPDATE comment SET Comment_szoveg = '${req.body.bevitel1}' WHERE comment.Comment_id = ${req.body.bevitel2}`, (err, rows, fields) => {
+      if (err) {
+        console.log("Hiba")
+      }
+      else {
+        console.log(rows)
+        res.send(rows)
+      }
+
+    })
+    connection.end()
   })
 
 
