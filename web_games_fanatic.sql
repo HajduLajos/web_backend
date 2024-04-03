@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Már 01. 08:08
+-- Létrehozás ideje: 2024. Ápr 03. 13:02
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `web_games_fanatic`
 --
+CREATE DATABASE IF NOT EXISTS `web_games_fanatic` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+USE `web_games_fanatic`;
 
 -- --------------------------------------------------------
 
@@ -248,7 +250,7 @@ CREATE TABLE `jatekok` (
 
 INSERT INTO `jatekok` (`jatekok_id`, `jatekok_nev`, `jatekok_db`, `jatekok_megjelenes`, `jatekok_ar`, `jatekok_kep`, `jatekok_eszkozid`, `jatekok_trailer`) VALUES
 (1, 'Forza Horizon 5 ', 8, '2021-11-01', 12990, 'kep111.jpg', 4, 'https://www.youtube.com/embed/FYH9n37B7Yw?si=ZwfrgWezqUIm-SOn'),
-(2, 'Forza Horizon 5 ', 5, '2021-11-01', 13990, 'kep112.jpg', 1, 'https://www.youtube.com/embed/FYH9n37B7Yw?si=ZIySiElO4rWAhYNS'),
+(2, 'Forza Horizon 5 Premium', 5, '2021-11-01', 13990, 'kep112.jpg', 1, 'https://www.youtube.com/embed/FYH9n37B7Yw?si=ZIySiElO4rWAhYNS'),
 (3, 'The Sims 4 - For Rent (EP15)\r\n', 3, '2023-12-07', 15399, 'kep113.jpg', 1, 'https://www.youtube.com/embed/sdhU5tRCqYc?si=JMfv3DEoMv6qoEm2'),
 (4, 'Plants Vs Zombies: Battle For Neighborville\r\n', 54, '2019-10-18', 3990, 'kep114.jpg', 1, 'https://www.youtube.com/embed/RwYjx4VPzx0?si=O8P7hZ9KSD3T96ha'),
 (5, 'LEGO The Hobbit\r\n', 23, '2014-04-11', 1499, 'kep115.jpg', 4, 'https://www.youtube.com/embed/83OMunaBvqU?si=ckQUokZMFjeMNr09'),
@@ -285,8 +287,8 @@ INSERT INTO `jatekok` (`jatekok_id`, `jatekok_nev`, `jatekok_db`, `jatekok_megje
 (36, 'Skull and Bones Premium Edition', 22, '2024-06-10', 44000, 'kep146.jpg', 4, 'https://www.youtube.com/embed/aJy3FXGb6ok?si=mu03oDHI4Ycruy2c'),
 (37, 'CYGNI: All Guns Blazing', 15, '2023-12-05', 22350, 'kep147.jpg', 4, 'https://www.youtube.com/embed/cE2g5wIpB-Y?si=yZv19OXGntVSt2-T'),
 (38, 'Metal Gear Solid: Master Collection Vol. 1', 9, '2023-11-08', 18999, 'kep148.jpg', 4, 'https://www.youtube.com/embed/Ej-I-Qv8UkE?si=SwcC5WonulWLhh_v'),
-(39, 'Hogwarts Legacy', 12, '2023-05-13', 24666, 'kep148.jpg', 4, 'https://www.youtube.com/embed/BtyBjOW8sGY?si=Z_ZJpJZvNd2EyTkX'),
-(40, 'Starfield', 22, '2023-05-25', 33000, 'kep148.jpg', 4, 'https://www.youtube.com/embed/kfYEiTdsyas?si=ba4EDCZuN82zRJVN'),
+(39, 'Hogwarts Legacy', 12, '2023-05-13', 24666, 'kep151.jpg', 4, 'https://www.youtube.com/embed/BtyBjOW8sGY?si=Z_ZJpJZvNd2EyTkX'),
+(40, 'Starfield', 22, '2023-05-25', 33000, 'kep149.jpg', 4, 'https://www.youtube.com/embed/kfYEiTdsyas?si=ba4EDCZuN82zRJVN'),
 (41, 'Watch Dogs Legion', 11, '2022-07-15', 4999, 'kep150.jpg', 4, 'https://www.youtube.com/embed/srXrGKGAU20?si=pROQA15Ng6t_Wrcd');
 
 -- --------------------------------------------------------
@@ -387,16 +389,19 @@ CREATE TABLE `szavazat_jatekok` (
 INSERT INTO `szavazat_jatekok` (`szavazat_id`, `szavazat_jatek`) VALUES
 (1, 1),
 (2, 2),
-(3, 1),
-(4, 1),
-(5, 1),
-(6, 1),
+(3, 11),
+(4, 11),
+(5, 11),
+(6, 11),
 (7, 2),
 (8, 1),
 (9, 1),
 (10, 3),
-(11, 1),
-(12, 1);
+(11, 3),
+(12, 3),
+(13, 12),
+(14, 11),
+(15, 6);
 
 -- --------------------------------------------------------
 
@@ -656,7 +661,7 @@ ALTER TABLE `rendeles`
 -- AUTO_INCREMENT a táblához `szavazat_jatekok`
 --
 ALTER TABLE `szavazat_jatekok`
-  MODIFY `szavazat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `szavazat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT a táblához `users`
