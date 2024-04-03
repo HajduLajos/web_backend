@@ -145,7 +145,8 @@ module.exports = function (app) {
 
     kapcsolat()
 
-    connection.query('SELECT jatekok.jatekok_nev,COUNT(*) AS darabszam FROM jatekok INNER JOIN szavazat_jatekok ON jatekok_id=szavazat_jatekok.szavazat_jatek GROUP BY jatekok_id', (err, rows, fields) => {
+    connection.query(`SELECT jatekok.jatekok_nev,COUNT(*) AS darabszam FROM jatekok INNER JOIN szavazat_jatekok ON
+     jatekok_id=szavazat_jatekok.szavazat_jatek GROUP BY jatekok_id`, (err, rows, fields) => {
       if (err) throw err
 
       console.log(rows)
